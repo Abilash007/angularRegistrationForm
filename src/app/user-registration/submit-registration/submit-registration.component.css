@@ -1,0 +1,40 @@
+.registrationForm {
+    padding-top: 58px;
+    padding-bottom: 76px;
+}
+
+.inputFieldPadding {
+    padding-top: 33px;
+}
+
+::ng-deep .p-dropdown {
+    width: 100%
+}
+
+::ng-deep .p-inputtext {
+    width: 100%
+}
+
+::ng-deep .p-chips {
+    width: 100%
+}
+
+
+.Subscribe{
+    position: relative;
+    right: 90px;
+}
+.photoAlignment{
+    padding-top: 48px;
+    padding-left: 34px;
+}
+.slider{
+    padding-left: 18%;
+}
+
+.img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }

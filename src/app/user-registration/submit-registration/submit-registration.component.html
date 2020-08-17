@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="p-grid" [formGroup]="registerForm">
+        <div class="p-col-4">
+            <div class="p-grid photoAlignment">
+                <div *ngIf="!editFunctionality; else showImage">
+                    <p-fileUpload name="demo[]" accept="image/*" chooseLabel="Choose your photo"
+                        (onSelect)="onSelect($event)" [showCancelButton]="false" [showUploadButton]="false">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+                <ng-template #showImage>
+                    <pre>
+                        <img [src]="imagePath" alt="image">
+                    </pre>
+                </ng-template>
+            </div>
+        </div>
+        <div class="p-col-6 registrationForm">
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center p-justify-end"><label>Name</label></div>
+                <div class="p-col-5"><input type="text" pInputText formControlName="firstName" />
+                    <p-message *ngIf="!registerForm.controls['firstName'].valid" severity="error"
+                        text="Invalid firstName">
+                    </p-message>
+                </div>
+                <div class="p-col-5"><input type="text" pInputText formControlName="lastName" />
+                    <p-message *ngIf="!registerForm.controls['lastName'].valid" severity="error"
+                        text="Invalid lastName">
+                    </p-message>
+                </div>
+
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-end"><label>Age</label></div>
+                <div class="p-col-10 inputFieldPadding">
+                    <p-slider [animate]="true" [step]="20" formControlName="age" [min]="13" [max]="100"></p-slider>
+                </div>
+                <h4 class="slider">Age: {{registerForm.controls['age'].value}}</h4>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>Email</label></div>
+                <div class="p-col-10 inputFieldPadding"><input type="text" pInputText formControlName="email" />
+                    <p-message *ngIf="!registerForm.controls['email'].valid" severity="error"
+                    text="Invalid Email Id"></p-message>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>Tel</label></div>
+                <div class="p-col-10 inputFieldPadding"><input type="text" pInputText formControlName="tel" />
+                    <p-message *ngIf="!registerForm.controls['tel'].valid" severity="error"
+                        text="Invalid Telephone Number"></p-message>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>State</label></div>
+                <div class="p-col-10 inputFieldPadding">
+                    <p-dropdown [options]="states" formControlName="state"></p-dropdown>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>Country</label></div>
+                <div class="p-col-10 inputFieldPadding">
+                    <p-dropdown [options]="country" formControlName="country"></p-dropdown>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>Address</label></div>
+                <div class="p-col-10 inputFieldPadding">
+                    <p-dropdown [options]="address" formControlName="address" (onChange)="addressOnChange($event)"></p-dropdown>
+                </div>
+            </div>
+
+            <div class="p-grid" *ngIf="showHomeAddress || showCompanyAddress">
+                <div class="p-col-2 p-col-align-center"><label>{{showLabel1}}</label></div>
+                <div class="p-col-4 inputFieldPadding"><textarea pInputTextarea formControlName="address1"></textarea>
+                </div>
+
+                <div class="p-col-2 p-col-align-center"><label>{{showLabel2}}</label></div>
+                <div class="p-col-4 inputFieldPadding"><textarea pInputTextarea formControlName="address2"></textarea>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-center"><label>Interests</label></div>
+                <div class="p-col-10 inputFieldPadding">
+                    <p-chips formControlName="interests"></p-chips>
+                </div>
+            </div>
+
+
+            <div class="p-grid">
+                <div class="p-col-2 p-col-align-end p-offset-2 inputFieldPadding">
+                    <p-checkbox name="groupname" formControlName="subscribe" value="val1"></p-checkbox>
+                </div>
+                <div class="p-col-7 inputFieldPadding"><label class="Subscribe">Subscribe to news letter</label></div>
+            </div>
+
+            <div class="p-grid p-offset-2 inputFieldPadding">
+                <p-button label="Submit" (onClick)="navigateToCofirmation()" [disabled]="submitDisableBtn"></p-button>
+            </div>
+        </div>
+    </div>

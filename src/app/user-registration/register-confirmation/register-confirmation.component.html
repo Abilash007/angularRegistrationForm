@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="p-grid">
+        <div class="p-col-4">
+            <img src={{imageURl}} alt="image"><br><br>
+            <a [routerLink]="">Edit photo</a><br><br>
+            <a [routerLink]="['/register/userDetails']">Edit Profile</a>
+        </div>
+        <div class="p-col-8">
+            <div *ngIf="valuesToShow">
+                <p class="paragraphStyle">I am {{this.valuesToShow?.firstName}} {{this.valuesToShow?.lastName}} and I am
+                    {{this.valuesToShow?.age}}
+                    and you can send your emails to {{this.valuesToShow?.email}}, I lives in the
+                    state of {{this.valuesToShow?.state.name}}.I likes to {{this.valuesToShow?.interests}} and
+                    {{lastIndexValue}}.And please send me the news letters.
+                    Please reach out me on my phone {{this.valuesToShow?.tel}}.
+                </p>
+                <div>
+                    <p-button label="Agree"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
